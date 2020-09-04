@@ -1,0 +1,320 @@
+html{
+  padding: 1rem;
+  background: #ededf1;
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  background: #ededf1;  
+  user-select: none;
+  overflow: hidden;
+}
+
+.title{
+  background: #cfcfeaa6;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  padding: 0.5rem 0 0 8rem;
+  box-shadow: 0px 0px 15px 1px #707098;
+}
+
+.card{
+  box-shadow: 0px 0px 10px 1px #170d0d;
+  height: 100%;
+  margin-bottom: 0;
+  font-weight: bold;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+.description-text{
+  margin-top: -0.5rem;
+}
+
+.container-body{
+  margin-top: 11rem;
+  padding: 2rem;
+  height: calc(100vh - 50vh);
+}
+
+.value-container{
+  position: relative;
+  text-align: center;
+  padding: 5rem;
+}
+
+.footer{
+  background: #cfcfeaa6;
+  text-align: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.footer-text{
+  font-size: 13px;
+}
+
+#temp-value{
+  font-size: 23px;
+}
+
+#temp-text{
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+#LoginButton:hover{
+  color: white !important;
+  font-size: 17px;
+  font-weight: bold;
+  font-size: 17px;
+  background: #949393 !important;
+  text-decoration: none;
+}
+
+#userButton:hover{
+  cursor: pointer;
+  color: white !important;
+  font-size: 17px;
+  font-weight: bold;
+  font-size: 17px;
+  background: #949393 !important;
+  text-decoration: none;
+}
+
+.dropdown-toggle::after{
+  display: none;
+}
+
+.dropdown-menu.dropdown-menu-right::before{
+  right: 0.6rem;
+  left: auto;
+}
+
+.dropdown-menu::before{
+content: "";
+    position: absolute;
+    top: -1px;
+    left: 1.2rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    display: block;
+    background: #fff;
+    transform: rotate(45deg) translate(-7px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    box-sizing: border-box;  
+}
+
+@media  screen and (max-width: 768px)
+{
+  .container-body{
+    position: absolute;
+    width: 75%;
+    height: 50%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  #temp-text{
+    letter-spacing: 0;
+  }
+
+  #temp-value{
+    font-size: 22px
+  }
+
+  .title{
+    text-align: center;
+    padding: 0.5rem 1rem 0 1rem;
+  }
+
+  .title h1{
+    font-size: 70px;
+  }
+
+  .title p{
+    display: none;
+  }
+}
+
+#LoginBar:hover{
+   color: black !important;
+   text-decoration: none;
+}
+
+#menu{
+  display: none;
+  background: #b7acac;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 9999;
+  opacity: 95%;
+  width: 100%; 
+  height: 100%; 
+  padding: 2rem;
+}
+
+#closeWrapper{
+  cursor: pointer;
+  font-size: 3rem;
+  color: black;
+  opacity: 100%;
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+}
+
+.LoginWrapper{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#LoginForm{
+  display: flex;
+  flex-direction: column;
+  padding: 0 5rem 0 5rem;
+  max-width: 550px;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 20px;
+  width: 100%;
+}
+
+@media screen and (max-width: 869px)
+{
+  #LoginButton{
+    display: none;
+  }
+
+  #LoginBar{
+    display: block !important;
+  }
+
+  #guts{
+    min-height: 40vh;
+  }
+
+  .value-container{
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 817px)
+{
+  #temp-text{
+    font-size: 30px;
+  }
+  .card{
+    height: unset;
+  }
+
+  .description-text{
+    font-size: 12px;
+  }
+
+  .navbar-brand{
+    font-size: 1.5vw !important;
+  }
+}
+
+@media screen and (max-width: 650px)
+{
+  .description-text{
+    display: none;
+  }
+  
+  .loginNav{
+    padding: 0 4px 0 0 !important;
+  }
+
+  nav{
+    padding: 1rem 2rem 1rem 2rem !important;
+  }
+}
+
+@media screen and (max-width: 610px)
+{
+  .description-text{
+    display: none;
+  }
+
+  .loginNav{
+    padding: 0 4px 0 0 !important;
+  }
+
+  nav{
+    padding: 1rem 2rem 1rem 2rem !important;
+  }
+}
+
+@media screen and (max-width: 500px)
+{
+  #footer-text-short{
+    display: block !important;
+    font-size: 2vw;
+  }
+
+  #footer-text-full{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 546px)
+{
+  .value-container{
+    padding: 4rem 1rem 4rem 1rem;
+  }
+
+  #temp-text{
+    font-size: 5vw;
+  }
+  #temp-value{
+    font-size: 5vw;
+  }
+}
+
+@media screen and (max-width: 441px)
+{
+  nav{
+    padding: 1rem 0 1rem 0 !important;
+  }
+
+  .loginNav{
+    padding: 0 2rem 0 0 !important;
+  }
+
+  .titleNav{
+    padding: 10px 2rem 0 1rem !important;
+  }
+}
+
+@media screen and (max-width: 329px)
+{
+  .titleNav h1{
+    font-size: 10vw !important;
+  }
+}
