@@ -124,6 +124,29 @@
   </div>
 </div>
 
+<div class="modal fade" id="infoId" tabindex="-1" role="dialog" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header" style="border: none;">
+	        <h5 class="modal-title" id="buldingEditTitle">Faculty Details</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body" style="text-align: center;">
+	    	  <div class="form-group">
+			    <label for="name">ID Fakultas</label>
+			    <input type="text" class="form-control" name="idUserInfo" id="idUserInfo" placeholder="Enter ID" required="" disabled="" style="text-align: center;">
+			  </div>
+			  <div class="form-group">
+			    <label for="name">Keterangan</label>
+			    <input type="text" class="form-control" name="nameInfo" id="nameInfo" placeholder="Enter Name" required="" disabled="" style="text-align: center;">
+			  </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 @endsection
 
 @section('additionalScripts')
@@ -142,7 +165,13 @@
 			ajax: "{{ url('api/getUser') }}",
 			columns: [
 				{data: 'id' , name: 'id'},
-				{data: 'id_ref_fakultas', name: 'id_ref_fakultas', orderable: false},
+				{data: 'id_ref_fakultas' , name: 'id_ref_fakultas',
+				 fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+		            if(oData.id_ref_fakultas) {
+		                $(nTd).html("<a href='#' data-id='"+oData.id_ref_fakultas+"' data-toggle='modal' data-target='#infoId' id='idRefUsers'>"+oData.id_ref_fakultas+"</a>");
+			            }
+			        }
+			    },
 				{data: 'name' , name: 'name', orderable: false},
 				{data: 'email' , name: 'email', orderable: false},
 				{  mRender: function (data, type, row) {
@@ -177,6 +206,19 @@
 				}
 			})
 		});
+
+        $(document).on('click','#idRefUsers',function(e){
+			e.preventDefault();
+			var id = $(this).attr('data-id');
+			$.ajax({
+				url: 'api/gedung/info/'+id,
+				success: function(data){
+					console.log(data);
+					$('#idUserInfo').val(data.id);
+					$('#nameInfo').val(data.keterangan);
+				}
+			})
+		})
 
 		$(document).on('click','#forgotPass',function(e){
 			e.preventDefault();
