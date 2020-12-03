@@ -8,7 +8,7 @@ class Lantai extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
-    protected $table = 'lantai';
+    protected $table = 'ref_lantai';
 
     public function scopeGetNextId($query){
         return $query->select('id')->orderByDesc('id')->first();

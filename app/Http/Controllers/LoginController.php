@@ -19,7 +19,6 @@ class LoginController extends Controller
 		$user = User::where('id',$id)
 		->update(array(
 			'password' => bcrypt($request->get('password')),
-			'isLogin' => '1'
 		));
 
 		return redirect()->to('dashboard');
@@ -28,8 +27,14 @@ class LoginController extends Controller
 	public function login(Request $request)
 	{
 		if(Auth::attempt(['email' => $request->get('email'),'password' => $request->get('password')])){
-			if(Auth()->user()->role == 'superadmin'){
+			if(Auth()->user()->role == 'super admin'){
 				return redirect()->route('dashboard/admin');
+			}
+			elseif(Auth()->user()->role == 'admin'){
+				return redirect()->route('dashboard/user');
+			}
+			else{
+				return view('/login');
 			}
 		}
 		$request->session()->flash('error','Check your Email and Password !!');

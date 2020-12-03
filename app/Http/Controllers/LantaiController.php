@@ -13,7 +13,7 @@ class LantaiController extends Controller
 	public function index(){
 		$getNextId = Lantai::getNextId();
         $getBuildingInfo = Building::all();
-		$getFakultasInfo = Fakultas::GetFakultasInfo();
+		$getFakultasInfo = Fakultas::GetGedungInfo();
 	
 		return view('lantai')->with([
 			'getNextId' => $getNextId,

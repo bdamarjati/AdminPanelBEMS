@@ -43,9 +43,21 @@
 		    <label for="email">Email address</label>
 		    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required="">
 		  </div>
+		  <!--
 		  <div class="form-group">
 		    <label for="faculty">Faculty</label>
 		    <input type="text" class="form-control" name="faculty" id="faculty" aria-describedby="emailHelp" placeholder="Enter faculty" required="">
+		  </div>
+		  -->
+		  <div class="form-group">
+			    <label for="id_ref_fakultas">ID Fakultas</label>
+			    <select class="form-control" id="id_ref_fakultas" name="id_ref_fakultas" style="text-transform: uppercase;">
+					@foreach($fakultasInfo as $info)
+					  @if($info['id'] != 0)
+					      <option value="{{ $info['id'] }}">{{ $info['id'] }} - {{ $info['keterangan'] }}</option>
+				      @endif
+					@endforeach
+				</select>
 		  </div>
 		  <div class="form-group">
 		    <label for="password" style="font-weight: bold;">Password: default</label>
@@ -211,7 +223,7 @@
 			e.preventDefault();
 			var id = $(this).attr('data-id');
 			$.ajax({
-				url: 'api/gedung/info/'+id,
+				url: 'api/user/info/'+id,
 				success: function(data){
 					console.log(data);
 					$('#idUserInfo').val(data.id);

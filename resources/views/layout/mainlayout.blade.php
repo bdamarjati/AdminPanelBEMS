@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html style="padding: 0">
 <head>
+  
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>BEMS Admin Panel - @yield('title')</title>

@@ -10,17 +10,19 @@ use Carbon\Carbon;
 class UserController extends Controller
 {
 	public function index(){
-		return view('users');
+		$getFakultasInfo = Fakultas::all();
+		return view('users')->with([
+			'fakultasInfo' => $getFakultasInfo
+		]);
 	}
 
 	public function store(Request $request){
 		$user = new User();
 		$user->name = $request->get('name');
 		$user->email = $request->get('email');
-		$user->id_ref_fakultas = $request->get('faculty');
+		$user->id_ref_fakultas = $request->get('id_ref_fakultas');
 		$user->password = bcrypt('default');
 		$user->role = 'admin';
-		$user->isLogin = '0';
 
 		$user->save();
 	}

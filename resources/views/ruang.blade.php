@@ -43,7 +43,7 @@
 			        <select class="form-control" id="id_ref_lantai" name="id_ref_lantai" style="text-transform: uppercase;">
 						@foreach($lantaiInfo as $info)
 						  @if($info['id'] != 0)
-						      <option value="{{ $info['id'] }}">Gedung {{ $info['id_ref_gedung'] }} - {{ $info['lantai'] }}</option>
+						      <option value="{{ $info['id'] }}">Gedung {{ $info['id_ref_gedung'] }} - Lantai {{ $info['lantai'] }}</option>
 					      @endif
 						@endforeach
 				    </select>
@@ -76,7 +76,7 @@
 			    <label for="id">ID Lantai - Lantai</label>
 			     <select class="form-control" id="idLantaiEdit" name="idLantaiEdit" style="text-transform: uppercase;">
 				    @foreach($lantaiInfo as $info)
-				      <option value="{{ $info['id'] }}">Gedung {{ $info['id'] }} - {{ $info['lantai'] }}</option>
+				      <option value="{{ $info['id'] }}">{{ $info['id'] }} - Lantai {{ $info['lantai'] }}</option>
 					@endforeach
 				</select>
 			  </div>

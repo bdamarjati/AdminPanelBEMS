@@ -58,6 +58,28 @@ Route::middleware('superadminRole')->group(function(){
     // Data Relations Route
 	Route::get('relation','RelationController@index');
 });
+/*
+Route::middleware('adminRole')->group(function(){
+    // Dashboard Route
+    Route::get('dashboard','AdminController@index')->name('dashboard/user');
+    // Admin Route
+    Route::get('changeAdminPassword','AdminController@changePassword')->name('changeAdminPassword');
+    Route::post('updateAdminPassword','AdminController@updatePassword')->name('updateAdminPassword');
+    // Users Route
+	Route::get('users','UserController@index');
+    // Fakultas Route
+	Route::get('fakultas','FakultasController@index');
+    // Gedung Route
+	Route::get('gedung','BuildingController@index');
+    // Lantai Route
+	Route::get('lantai','LantaiController@index');
+    // Ruang Route
+	Route::get('ruang','RuangController@index');
+    // Devices Route
+	Route::get('devices','DeviceController@index');
+    // Data Relations Route
+	Route::get('relation','RelationController@index');
+});*/
 
 Route::post('loginData','LoginController@login')->name('loginData');
 Route::get('logout','LoginController@logout')->name('logout');

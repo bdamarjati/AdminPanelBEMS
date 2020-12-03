@@ -13,15 +13,15 @@ class Device extends Model
   public $timestamps = false;
 
 	public function scopeGetInformation($query){
-		return $query->join('ruang','ruang.id','device.id_ref_ruang')
-		->select('device.id','device.updated_at','ruang.ruang','device.status')
+		return $query->join('ref_ruang','ref_ruang.id','device.id_ref_ruang')
+		->select('device.id','device.updated_at','ref_ruang.ruang','device.status')
 		->get();
 	}
 
 	public function scopeGetAllInformation($query){
-		return $query->join('ruang','ruang.id','device.id_ref_ruang')
+		return $query->join('ref_ruang','ref_ruang.id','device.id_ref_ruang')
 		->join('users','users.id_ref_fakultas','users.id')
-		->select('device.id','ruang.ruang','users.name','device.status')
+		->select('device.id','ref_ruang.ruang','users.name','device.status')
 		->get();
 	}
 

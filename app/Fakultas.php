@@ -16,25 +16,31 @@ class Fakultas extends Model
 
     public function scopeGetFakultasInfo($query){
         return $query->join('gedung','fakultas.id','gedung.id_ref_fakultas')
-        ->join('lantai','gedung.id','lantai.id_ref_gedung')
-        ->select('lantai.id','lantai.id_ref_gedung','gedung.gedung','fakultas.keterangan')
+        ->join('ref_lantai','gedung.id','ref_lantai.id_ref_gedung')
+        ->select('ref_lantai.id','ref_lantai.id_ref_gedung','gedung.gedung','fakultas.keterangan')
+		->get();
+    }
+
+    public function scopeGetGedungInfo($query){
+        return $query->join('gedung','fakultas.id','gedung.id_ref_fakultas')
+        ->select('gedung.id','gedung.id_ref_fakultas','gedung.gedung','fakultas.keterangan')
 		->get();
     }
 
     public function scopeGetRuangInfo($query){
         return $query->join('gedung','fakultas.id','gedung.id_ref_fakultas')
-        ->join('lantai','gedung.id','lantai.id_ref_gedung')
-        ->join('ruang','lantai.id','ruang.id_ref_lantai')
-        ->select('ruang.id','ruang.id_ref_lantai','ruang.ruang','lantai.lantai','gedung.gedung','fakultas.keterangan')
+        ->join('ref_lantai','gedung.id','ref_lantai.id_ref_gedung')
+        ->join('ref_ruang','ref_lantai.id','ref_ruang.id_ref_lantai')
+        ->select('ref_ruang.id','ref_ruang.id_ref_lantai','ref_ruang.ruang','ref_lantai.lantai','gedung.gedung','fakultas.keterangan')
         ->get();
     }
 
     public function scopeGetAllDeviceInfo($query){
         return $query->join('gedung','fakultas.id','gedung.id_ref_fakultas')
-        ->join('lantai','gedung.id','lantai.id_ref_gedung')
-        ->join('ruang','lantai.id','ruang.id_ref_lantai')
-        ->join('device','ruang.id','device.id_ref_ruang')
-        ->select('device.id','device.status','ruang.ruang','lantai.lantai','gedung.gedung','fakultas.keterangan')
+        ->join('ref_lantai','gedung.id','ref_lantai.id_ref_gedung')
+        ->join('ref_ruang','ref_lantai.id','ref_ruang.id_ref_lantai')
+        ->join('device','ref_ruang.id','device.id_ref_ruang')
+        ->select('device.id','device.status','ref_ruang.ruang','ref_lantai.lantai','gedung.gedung','fakultas.keterangan')
         ->get();
     }
 

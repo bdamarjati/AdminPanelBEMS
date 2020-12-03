@@ -17,7 +17,7 @@ class AdminController extends Controller
 
 		$totalDevice = Device::count('id');		
 		$totalUser = User::count('id');
-		$totalGedung = Fakultas::GetAllDeviceInfo()->count('gedung');
+		$totalGedung = Fakultas::GetGedungInfo()->count('gedung');
 		$totalRuang = Fakultas::GetAllDeviceInfo()->count('id');
 
 		$device_info = Device::GetInformation();

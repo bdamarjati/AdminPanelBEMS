@@ -65,10 +65,21 @@
 	      <div class="modal-body">
 	        <form method="post" id="formEdit">
 	        	{{ csrf_field() }}
-	          <div class="form-group">
-			    <label for="id">ID Device</label>
-			    <input type="text" class="form-control" name="idDeviceEdit" id="idDeviceEdit" aria-describedby="emailHelp" placeholder="Enter ID Device" required="">
+				<!--
+	    		<div class="form-group">
+					<label for="id">ID Device</label>
+			    	<input type="text" class="form-control" name="idDeviceEdit" id="idDeviceEdit" aria-describedby="emailHelp" placeholder="Enter ID Device" required="">
+				</div>
+				-->
+			  <div class="form-group">
+			    <label for="idDeviceEdit">Ruang</label>
+			        <select class="form-control" id="idDeviceEdit" name="idDeviceEdit" style="text-transform: uppercase;">
+						@foreach($ruangInfo as $info)
+					      <option value="{{ $info['id'] }}">{{ $info['id'] }} - Ruang {{ $info['ruang'] }}</option>
+						@endforeach
+				    </select>
 			  </div>
+			  <!--
 	    	  <div class="form-group">
 			    <label for="name">ID Gedung - Gedung</label>
 			     <select class="form-control" id="idBuildingEdit" name="idBuildingEdit" style="text-transform: uppercase;">
@@ -77,6 +88,7 @@
 					@endforeach
 				</select>
 			  </div>
+			  -->
 			  <button type="submit" class="btn btn-primary" style="float: right;" id="saveBtn2">Save Changes</button>
 	        </form>
 			
@@ -237,7 +249,7 @@
 				url: 'api/device/edit/'+id,
 				success: function(data){
 					console.log(data);
-					$('#idBuildingEdit').val(data.id_ref_gedung);
+					$('#idDeviceEdit').val(data.id_ref_ruang);
 				}
 			});
 			$("#saveBtn2").click(function(e){

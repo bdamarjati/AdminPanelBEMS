@@ -6,7 +6,7 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Closure;
 use Auth;
 
-class SuperAdminRole
+class AdminRole
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -17,7 +17,7 @@ class SuperAdminRole
     public function handle($request, Closure $next)
     {
         if($request->user()){
-            if($request->user()->role == 'super admin'){
+            if($request->user()->role == 'admin'){
                 return $next($request);
             }
             return redirect()->back();
